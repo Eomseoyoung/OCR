@@ -1,6 +1,8 @@
-# Qwen VL OCR
+# Qwen VLM 기반 OCR
 
-Qwen2-VL / Qwen2.5-VL 비전-언어 모델을 활용한 이미지 OCR 도구입니다.
+Qwen2-VL / Qwen2.5-VL **비전-언어 모델(VLM)** 에 OCR 프롬프트를 입력해 이미지에서 텍스트를 추출하는 도구입니다.
+
+> VLM에 "OCR engine처럼 동작하라"는 프롬프트를 주는 방식이므로, 전통적인 OCR 엔진(Tesseract 등)과는 다릅니다.
 
 ## 요구사항
 
@@ -22,14 +24,14 @@ python qwen_ocr.py --image <이미지 경로> [옵션]
 | 옵션 | 기본값 | 설명 |
 |------|--------|------|
 | `--image` | (필수) | 입력 이미지 경로 |
-| `--model` | `Qwen/Qwen2-VL-2B-Instruct` | 사용할 모델 ID |
-| `--mode` | `layout` | OCR 모드 (`plain` / `layout` / `json`) |
+| `--model` | `Qwen/Qwen2-VL-2B-Instruct` | 사용할 VLM 모델 ID |
+| `--mode` | `layout` | 출력 모드 (`plain` / `layout` / `json`) |
 | `--max_new_tokens` | `2048` | 최대 생성 토큰 수 |
 
-### OCR 모드
+### 출력 모드
 
 - **plain** – 이미지 내용을 자연어로 설명
-- **layout** – 줄바꿈과 공백을 유지하며 텍스트 추출 후 요약 제공
+- **layout** – 줄바꿈·공백을 유지하며 텍스트 추출 후 요약 제공
 - **json** – `{"full_text": "...", "lines": [...]}` 형식의 JSON으로 추출
 
 ### 예시
